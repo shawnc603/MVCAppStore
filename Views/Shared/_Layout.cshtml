@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - MVCApp Shopping Cart</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="~/Content/css/materialize.min.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="~/Content/js/materialize.min.js"></script>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <nav class="light-blue lighten-1" role="navigation">
+                <div class="nav-wrapper container">
+                    <img src="~/images/tshirtlogo.jpg" alt="T Shirt Store" width="200" height="60" id="logo container" >
+                    <ul class="right hide-on-med-and-down">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                 
+                        <li>@Html.ActionLink("View Cart", "MyCart", "Cart")</li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <span></span>
+                            <strong>Hello: @Html.Encode(User.Identity.Name)</strong>
+                            @Html.ActionLink("Sign Out", "Logout", "User")
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "UserAdd", "User")</li>
+                            <span> | </span>
+                            <li>@Html.ActionLink("Sign In", "Login", "User")</li>
+                        }
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </header>
+        <div>
+            <br/>
+        </div>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <div>
+            <br /><br />
+        </div>
+        <footer class="page-footer blue">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s16">
+                        <h5 class="white-text"></h5>
+                    </div>
+                    <div class="col l4 offset-l2 s16">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MVCAppStore.Models.ProductDetails>
+
+@{
+    ViewBag.Title = "TShirts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<h2><span id="tshirt" style="color:crimson">T Shirts</span></h2>
+<div class="row">
+    @foreach (var m in Model)
+    {
+        <div class="col-md-4">
+            <div class="row">
+                <h4><span id="ProductName" style="color:darkred">@m.ProductName</span></h4>
+            </div>
+            <p>
+                <img src="~/Images/@m.Url" style="overflow: hidden; position: relative; width:200px; height:200px;" />
+            </p>
+            <div class="row">
+                <p><span id="ProductDescription" style="color:darkred">Description: @m.ProductDescription</span></p>
+            </div>
+            <div class="row">
+                <p><span id="Price" style="color:darkred">Price: @m.Price</span></p>
+            </div>
+            <p><a class="btn btn-default" href="~/Cart/AddItem/?ProductID=@m.ProductID" >Add to Cart</a>
+        </div>
+    }
+</div>
+<div>
+
+
+
+</div>
